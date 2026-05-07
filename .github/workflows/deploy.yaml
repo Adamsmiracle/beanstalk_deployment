@@ -46,14 +46,14 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::501789774890:role/{{secret.ROLE_TO_ASSUME}}
+          role-to-assume: arn:aws:iam::501789774890:role/{{secrets.ROLE_TO_ASSUME}}
           aws-region: ${{ env.AWS_REGION }}
 
       # Upload ZIP to S3
       - name: Upload to S3
         run: |
           aws s3 cp deploy/deploy.zip \
-          s3://${{ secret.S3_BUCKET }}/deploy-${{ github.sha }}.zip
+          s3://${{ secrets.S3_BUCKET }}/deploy-${{ github.sha }}.zip
 
       # Create Elastic Beanstalk version
       - name: Create EB Application Version
@@ -61,7 +61,7 @@ jobs:
           aws elasticbeanstalk create-application-version \
             --application-name ${{ env.APPLICATION_NAME }} \
             --version-label version-${{ github.sha }} \
-            --source-bundle S3Bucket="${{ secret.S3_BUCKET }}",S3Key="deploy-${{ github.sha }}.zip"
+            --source-bundle S3Bucket="${{ secrets.S3_BUCKET }}",S3Key="deploy-${{ github.sha }}.zip"
 
       # Deploy new version
       - name: Deploy to Elastic Beanstalk
