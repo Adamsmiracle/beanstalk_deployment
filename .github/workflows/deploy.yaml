@@ -46,7 +46,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::501789774890:role/{{secrets.ROLE_TO_ASSUME}}
+          role-to-assume: ${{secrets.ROLE_TO_ASSUME}}
           aws-region: ${{ env.AWS_REGION }}
 
       # Upload ZIP to S3
