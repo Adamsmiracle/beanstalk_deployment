@@ -20,7 +20,7 @@ public class UserService {
 
     public void saveUser(String name, String email){
         Map<String, AttributeValue> item = new HashMap<>();
-        item.put("id", AttributeValue.builder().s(UUID.randomUUID().toString()).build());
+        item.put("userId", AttributeValue.builder().s(UUID.randomUUID().toString()).build());
         item.put("name", AttributeValue.builder().s(name).build());
         item.put("email", AttributeValue.builder().s(email).build());
 
