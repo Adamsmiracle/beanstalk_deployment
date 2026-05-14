@@ -11,8 +11,10 @@ public class DynamoDBConfig {
 
     @Bean
     public DynamoDbClient dynamoDbClient() {
+
+        String region = System.getenv("AWS_REGION");
         return DynamoDbClient.builder()
-                .region(Region.EU_NORTH_1)
+                .region(Region.of(region))
                 .build();
     }
 
