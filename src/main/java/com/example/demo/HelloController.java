@@ -66,7 +66,7 @@ public class HelloController {
             <body>
                 <div class="card">
                     <div class="status-icon">✔</div>
-                    <h1>System Online</h1>
+                    <h1>System Online Version 2</h1>
                     <p>The backend service is running smoothly. All microservices are currently reachable and stable.</p>
                     <a href="/save-user" class="btn">Test Database</a>
                 </div>
