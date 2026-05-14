@@ -24,7 +24,7 @@ public class UserService {
         item.put("name", AttributeValue.builder().s(name).build());
         item.put("email", AttributeValue.builder().s(email).build());
 
-        String tableName = System.getenv("DYNAMODB_TABLE_NAME");
+        String tableName = System.getenv("DYNAMODB_TABLE");
         PutItemRequest request = PutItemRequest.builder()
                 .tableName(tableName)
                 .item(item)
